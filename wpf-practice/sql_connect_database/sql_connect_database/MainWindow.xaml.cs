@@ -26,5 +26,13 @@ namespace sql_connect_database
             EmployeeManager manager = new EmployeeManager();
             manager.LoadEmployees();
         }
+
+        private void Bttn_Add_New_Employee_Click(object sender, RoutedEventArgs e)
+        {
+
+
+                                       
+
+        }
     }
 }

@@ -27,7 +27,6 @@ namespace sql_connect_database
             this.BranchID = branchID;
 
 
-
         }
     }
 

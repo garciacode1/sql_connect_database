@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,22 +11,26 @@ namespace sql_connect_database
 {
     public class EmployeeManager()
     {
+        const string connectionString = "server=localhost;user=root;password=;port=3306;database=jdgj_ictprg431";
         public void LoadEmployees()
         {
-            string connectionString = "server=localhost;user=root;password=;port=3306;database=jdgj_ictprg431";
             using MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
-            string sql = @"INSERT INTO employees(given_name, family_name, branch_id,date_of_birth)
-                         VALUES('juan','garcia','2',now())";
-                
-            using MySqlCommand command = new MySqlCommand(sql, connection);
-            //command.ExecuteNonQuery();
-            string sql2 = "SELECT COUNT(*) FROM employees;";
-            using MySqlCommand command2 = new MySqlCommand(sql2, connection);
-            object result = command2.ExecuteScalar();
-            MessageBox.Show(result.ToString());
 
-            string sql3 = "SELECT * FROM employees;";
+            string insertSql = @"INSERT INTO employees 
+                (given_name, family_name, branch_id, date_of_birth, gross_salary, gender_identity, supervisor_id) 
+                VALUES 
+                (@GivenName, @FamilyName, @BranchId, @DateOfBirth, @GrossSalary, @Gender, @SupervisorId)";
+
+
+            //command.ExecuteNonQuery();
+
+            using MySqlCommand command = new MySqlCommand(insertSql, connection);
+
+            command.Parameters.AddWithValue("@GivenName", )
+          
+
+            /*string sql3 = "SELECT * FROM employees;";
             command2.CommandText = sql3;
             MySqlDataReader reader = command2.ExecuteReader();
             while (reader.Read())
@@ -39,9 +44,12 @@ namespace sql_connect_database
                 
                
                 MessageBox.Show(firstName + " " + familyName + " (" + dob.ToString("d") +")" );
-            }
+            }*/
             
+            
+
         }
-    }
+        public void AddEmployee()
+    }    
     
 }
