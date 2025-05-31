@@ -27,11 +27,37 @@ namespace sql_connect_database
             manager.LoadEmployees();
         }
 
-        private void Bttn_Add_New_Employee_Click(object sender, RoutedEventArgs e)
+        private void Bttn_Add_New_Employee_Click(object sender, RoutedEventArgs e) //click event to add employee
         {
+            //read and also convert values
+
+            int id = Convert.ToInt32(Txt_Box_Id_Add_Employee.Text);
+            string givenName = Txt_Box_Givenname_Add_Employee.Text;
+            string familyName = Txt_Box_Familyname_Add_Employee.Text;
+            DateTime dob = Datepicker_Add_Employee.SelectedDate ?? DateTime.Now;
+            string genderIdentity = Txt_Box_Gender_Identity.Text;
+            int grossSalary = Convert.ToInt32(Txt_Box_GrossSalary_Add_Employee.Text);
+            int supervisorId = Convert.ToInt32(Txt_Box_Suprvisor_Id_Add_Employee.Text);
+            int branchId = Convert.ToInt32(Txt_Box_BranchID_Add_Employee.Text);
+            
+            //create new employee objct with values
+
+            Employee newEmployee = new Employee(
+                id,
+                givenName,
+                familyName,
+                dob,
+                genderIdentity,
+                grossSalary,
+                supervisorId,
+                branchId
+            );
+            //Call the manager class to save employee object
+            EmployeeManager manager = new EmployeeManager();
+            manager.AddEmployee(newEmployee);
 
 
-                                       
+
 
         }
     }

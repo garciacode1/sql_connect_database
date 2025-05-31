@@ -12,20 +12,27 @@ namespace sql_connect_database
         public string GivenName { get; set; }
         public string FamilyName { get; set; }
         public DateTime DateofBirth { get; set; }
+        public string GenderIdentity { get; set; }
+        public int GrossSalary { get; set; }
+        public int SupervisorID {get; set;}
         public int BranchID { get; set; }
         
         
         
         
         
-        public Employee(int id, string givenName, string familyName, DateTime dob, int branchID) 
+        
+        public Employee(int id, string givenName, string familyName, DateTime dob, string genderIdentity, int grossSalary, int supervisorId, int branchId) 
         {
             this.ID = id;
             this.GivenName = givenName;
             this.FamilyName = familyName;
             this.DateofBirth = dob;
-            this.BranchID = branchID;
-
+            this.GenderIdentity = genderIdentity;
+            this.GrossSalary = grossSalary;
+            this.SupervisorID = supervisorId;
+            this.BranchID = branchId;
+            
 
         }
     }
