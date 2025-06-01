@@ -16,7 +16,7 @@ namespace sql_connect_database
         const string connectionString = "server=localhost;user=root;password=;port=3306;database=jdgj_ictprg431";
 
 
-        public List<Employee> LoadEmployees()
+        public List<Employee> ShowAllEmployees()
         {   
             List <Employee> employees = new List <Employee> ();
 
@@ -25,10 +25,28 @@ namespace sql_connect_database
             connection.Open();
 
             string loademployees = "SELECT * FROM employees;";
+            using MySqlCommand command = new MySqlCommand (loademployees, connection);
+            using MySqlDataReader reader = command.ExecuteReader();
 
+            while (reader.Read())
+            {
 
+                int id = Convert.ToInt32(reader["id"]);
+                string firstName = (string)(reader["given_name"]);
+                string familyName = (string)(reader["family_name"]);
+                DateTime dob = Convert.ToDateTime(reader["date_of_birth"]);
+                string genderIdentity = (string)(reader["gender_identity"]);
+                int grossSalary = Convert.ToInt32(reader["gross_salary"]);
+                int supervisorId = Convert.ToInt32(reader["supervisor_id"]);
+                int branchId = Convert.ToInt32(reader["branch_id"]);
 
+                Employee employee = new Employee(id, firstName, familyName, dob, genderIdentity, grossSalary, supervisorId, branchId);
 
+                employees.Add(employee);
+
+            }
+
+            return employees;
 
           /*string insertSql = @"INSERT INTO employees 
                 (given_name, family_name, branch_id, date_of_birth, gross_salary, gender_identity, supervisor_id) 
@@ -61,7 +79,7 @@ namespace sql_connect_database
 
 
 
-        }
+        }  
         public void AddEmployee(Employee employee)  //Method to Add an employee 
         {
             using MySqlConnection connection = new MySqlConnection(connectionString);

@@ -64,6 +64,26 @@ namespace sql_connect_database
             manager.DeleteEmployee(id);
             MessageBox.Show("Employee deleted.");
         }
+
+       
+
+
+        private void Bttn_Show_Employees_Information_Click(object sender, RoutedEventArgs e)
+        {
+            EmployeeManager manager = new EmployeeManager();
+            List<Employee> employees = manager.ShowAllEmployees();
+            MessageBox.Show("Employees retrieved: " + employees.Count);//troubleshoot
+
+            List_Box_Display_Employees.Items.Clear(); //clear the listBox before displaying
+
+            foreach (Employee employee in employees)
+            {
+                List_Box_Display_Employees.Items.Add(employee);
+
+            }
+        }
+
+        
     }
 
 

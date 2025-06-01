@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sql_connect_database
 {
-    public class Employee
+    public class Employee      //class Employeee BLUEPRINT
     {
         public int ID { get; set; }
         public string GivenName { get; set; }
@@ -22,7 +22,7 @@ namespace sql_connect_database
         
         
         
-        public Employee(int id, string givenName, string familyName, DateTime dob, string genderIdentity, int grossSalary, int supervisorId, int branchId) 
+        public Employee(int id, string givenName, string familyName, DateTime dob, string genderIdentity, int grossSalary, int supervisorId, int branchId) //attributes of a instance of a class
         {
             this.ID = id;
             this.GivenName = givenName;
@@ -35,6 +35,14 @@ namespace sql_connect_database
             
 
         }
+        public override string ToString() //ToString method  
+        {
+            return $"{ID}:{GivenName},{FamilyName}, {GrossSalary}, {BranchID}";  // this attributes are meant to be dispplayed on the ListBox 
+        }
+
+
+
+
     }
 
    
