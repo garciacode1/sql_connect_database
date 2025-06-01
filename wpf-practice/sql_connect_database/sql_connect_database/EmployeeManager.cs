@@ -16,25 +16,34 @@ namespace sql_connect_database
         const string connectionString = "server=localhost;user=root;password=;port=3306;database=jdgj_ictprg431";
 
 
-        public void LoadEmployees()
-        {
+        public List<Employee> LoadEmployees()
+        {   
+            List <Employee> employees = new List <Employee> ();
+
+            
             using MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
 
-            string insertSql = @"INSERT INTO employees 
+            string loademployees = "SELECT * FROM employees;";
+
+
+
+
+
+          /*string insertSql = @"INSERT INTO employees 
                 (given_name, family_name, branch_id, date_of_birth, gross_salary, gender_identity, supervisor_id) 
                 VALUES 
                 (@GivenName, @FamilyName, @BranchId, @DateOfBirth, @GrossSalary, @Gender, @SupervisorId)";
 
 
-            //command.ExecuteNonQuery();
+              command.ExecuteNonQuery();
 
             using MySqlCommand command = new MySqlCommand(insertSql, connection);
 
             //command.Parameters.AddWithValue("@GivenName", )
           
 
-            /*string sql3 = "SELECT * FROM employees;";
+              string sql3 = "SELECT * FROM employees;";
             command2.CommandText = sql3;
             MySqlDataReader reader = command2.ExecuteReader();
             while (reader.Read())
@@ -49,8 +58,8 @@ namespace sql_connect_database
                
                 MessageBox.Show(firstName + " " + familyName + " (" + dob.ToString("d") +")" );
             }*/
-            
-            
+
+
 
         }
         public void AddEmployee(Employee employee)  //Method to Add an employee 
@@ -62,8 +71,6 @@ namespace sql_connect_database
                                       "VALUES (@GivenName, @FamilyName, @DateOfBirth, @Gender, @GrossSalary, @SupervisorID, @BranchID)";
         
         
-        
-
                using MySqlCommand cmd = new MySqlCommand(addemployeesql,connection );
                cmd.Parameters.AddWithValue("@GivenName", employee.GivenName);
                cmd.Parameters.AddWithValue("@FamilyName", employee.FamilyName);
@@ -75,15 +82,30 @@ namespace sql_connect_database
 
                cmd.ExecuteNonQuery();
 
-
-
-
-
-
+            connection.Close();
 
 
 
         }
-    }    
+        public void DeleteEmployee(int id)
+        {
+            using MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
+            string deletesql = "DELETE FROM employees WHERE id = @Id;";
+
+            using MySqlCommand cmd = new MySqlCommand(deletesql, connection);
+
+            cmd.Parameters.AddWithValue("@Id", id);
+
+
+            cmd.ExecuteNonQuery();
+
+
+            connection.Close();
+
+        }
+
+
+    }   
     
 }

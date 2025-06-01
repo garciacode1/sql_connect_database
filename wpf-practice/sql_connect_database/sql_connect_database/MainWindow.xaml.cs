@@ -20,12 +20,7 @@ namespace sql_connect_database
         {
             InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            EmployeeManager manager = new EmployeeManager();
-            manager.LoadEmployees();
-        }
+     
 
         private void Bttn_Add_New_Employee_Click(object sender, RoutedEventArgs e) //click event to add employee
         {
@@ -55,10 +50,21 @@ namespace sql_connect_database
             //Call the manager class to save employee object
             EmployeeManager manager = new EmployeeManager();
             manager.AddEmployee(newEmployee);
-
+            //Message Box to confirm that employee has been added to th database. 
+            MessageBox.Show("New employee added");
 
 
 
         }
+
+        private void Bttn_Delete_Employee_Click(object sender, RoutedEventArgs e)
+        {
+            int id = Convert.ToInt32(Txt_Box_Id_Delete_Employee.Text);
+            EmployeeManager manager = new();
+            manager.DeleteEmployee(id);
+            MessageBox.Show("Employee deleted.");
+        }
     }
+
+
 }
