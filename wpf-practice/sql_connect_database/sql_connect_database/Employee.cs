@@ -37,9 +37,11 @@ namespace sql_connect_database
         }
         public override string ToString() //ToString method  
         {
-            return $"{ID}:{GivenName},{FamilyName}, {GrossSalary}, {BranchID}";  // this attributes are meant to be dispplayed on the ListBox 
-        }
+            return $"[{ID}], {GivenName}, {FamilyName}, (${GrossSalary}), [Branch:{BranchID}]";
+             
 
+        }
+         
 
 
 

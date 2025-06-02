@@ -48,37 +48,7 @@ namespace sql_connect_database
 
             return employees;
 
-          /*string insertSql = @"INSERT INTO employees 
-                (given_name, family_name, branch_id, date_of_birth, gross_salary, gender_identity, supervisor_id) 
-                VALUES 
-                (@GivenName, @FamilyName, @BranchId, @DateOfBirth, @GrossSalary, @Gender, @SupervisorId)";
-
-
-              command.ExecuteNonQuery();
-
-            using MySqlCommand command = new MySqlCommand(insertSql, connection);
-
-            //command.Parameters.AddWithValue("@GivenName", )
-          
-
-              string sql3 = "SELECT * FROM employees;";
-            command2.CommandText = sql3;
-            MySqlDataReader reader = command2.ExecuteReader();
-            while (reader.Read())
-            {
-                
-                int id = Convert.ToInt32(reader["id"]);
-                string firstName = (string)reader["given_name"];
-                string familyName = (string)reader["family_name"];
-                int branch_id = Convert.ToInt32(reader["branch_id"]);
-                DateTime dob = Convert.ToDateTime(reader["date_of_birth"]);
-                
-               
-                MessageBox.Show(firstName + " " + familyName + " (" + dob.ToString("d") +")" );
-            }*/
-
-
-
+        
         }  
         public void AddEmployee(Employee employee)  //Method to Add an employee 
         {
@@ -120,6 +90,51 @@ namespace sql_connect_database
 
 
             connection.Close();
+
+        }
+        public List<Employee> ShowHigherSalary()
+        {
+           List<Employee> employees = new List<Employee>();
+            using MySqlConnection connection = new MySqlConnection( connectionString);
+            connection.Open();
+
+            string highersalary = "SELECT * FROM employees Where gross_salary >70000";
+            
+            using MySqlCommand cmd = new MySqlCommand(highersalary, connection);
+            using MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                int id = Convert.ToInt32(reader["id"]);
+                string firstName = (string)(reader["given_name"]);
+                string familyName = (string)(reader["family_name"]);
+                DateTime dob = Convert.ToDateTime(reader["date_of_birth"]);
+                string genderIdentity = (string)(reader["gender_identity"]);
+                int grossSalary = Convert.ToInt32(reader["gross_salary"]);
+                int supervisorId = Convert.ToInt32(reader["supervisor_id"]);
+                int branchId = Convert.ToInt32(reader["branch_id"]);
+
+                Employee employee = new Employee(id, firstName, familyName, dob, genderIdentity, grossSalary, supervisorId, branchId);
+
+                employees.Add(employee);
+
+            }
+
+            return employees;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         }
 

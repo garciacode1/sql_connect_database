@@ -72,7 +72,7 @@ namespace sql_connect_database
         {
             EmployeeManager manager = new EmployeeManager();
             List<Employee> employees = manager.ShowAllEmployees();
-            MessageBox.Show("Employees retrieved: " + employees.Count);//troubleshoot
+         // MessageBox.Show("Employees recorded: " + employees.Count);//troubleshoot as the trigger wsnt working well
 
             List_Box_Display_Employees.Items.Clear(); //clear the listBox before displaying
 
@@ -83,7 +83,18 @@ namespace sql_connect_database
             }
         }
 
-        
+        private void Bttn_Show_Employees_Earn_More_Amount_Click(object sender, RoutedEventArgs e)
+        {
+            EmployeeManager manager = new EmployeeManager();
+            List<Employee> employees = manager.ShowHigherSalary();
+
+            List_Box_Display_Employees.Items.Clear(); //clear the listBox before displaying
+            foreach (Employee employee in employees)
+            {
+                List_Box_Display_Employees.Items.Add(employee);
+
+            }
+        }
     }
 
 
