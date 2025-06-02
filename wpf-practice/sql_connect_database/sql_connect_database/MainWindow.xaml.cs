@@ -95,6 +95,30 @@ namespace sql_connect_database
 
             }
         }
+
+        private void Bttn_Show_Employee_Same_Branch_Click(object sender, RoutedEventArgs e)
+        {
+
+            ComboBoxItem selectedBranchIdItem = (ComboBoxItem)Combo_Box_Branch_Id.SelectedItem;//item selected from combobox
+            string selectedBranchText = selectedBranchIdItem.Content.ToString();//getcontent from selected item
+
+            //convert text to a number
+            int branchId;
+            bool isValidNumber = int.TryParse(selectedBranchText, out branchId);
+
+            //create manager object to get employees
+            EmployeeManager manager = new EmployeeManager();
+            List<Employee> employees= manager.EmployeesByBranchId(branchId);
+            //clear list box
+            List_Box_Display_Employees.Items.Clear();
+
+            //add employees selected to the list box
+
+            foreach (Employee employee in employees)
+            {
+                List_Box_Display_Employees.Items.Add(employee);
+            }
+        }
     }
 
 

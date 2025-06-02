@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using Mysqlx.Crud;
+using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -124,19 +125,44 @@ namespace sql_connect_database
             return employees;
 
 
+        }
+        public List<Employee> EmployeesByBranchId(int branchId)
+        {
+            List<Employee> employees = new List<Employee>();
+            using MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
+
+            string employeesbybranch = "SELECT * FROM employees WHERE branch_id = @branchId";
+            using MySqlCommand cmd = new MySqlCommand(employeesbybranch, connection);
+            cmd.Parameters.AddWithValue("@branchId", branchId);
+
+            using MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                int id = Convert.ToInt32(reader["id"]);
+                string firstName = (string)(reader["given_name"]);
+                string familyName = (string)(reader["family_name"]);
+                DateTime dob = Convert.ToDateTime(reader["date_of_birth"]);
+                string genderIdentity = (string)(reader["gender_identity"]);
+                int grossSalary = Convert.ToInt32(reader["gross_salary"]);
+                int supervisorId = Convert.ToInt32(reader["supervisor_id"]);
+                int fetchedBranchId = Convert.ToInt32(reader["branch_id"]);
 
 
+                Employee employee = new Employee(id, firstName, familyName, dob, genderIdentity, grossSalary, supervisorId, branchId);
 
+                employees.Add(employee);
 
+            }
 
-
-
-
-
-
+            return employees;
 
 
         }
+
+
 
 
     }   
