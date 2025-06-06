@@ -26,7 +26,7 @@ namespace sql_connect_database
         {
             //read and also convert values
 
-            int id = Convert.ToInt32(Txt_Box_Id_Add_Employee.Text);
+            //int id = Convert.ToInt32(Txt_Box_Id_Add_Employee.Text);
             string givenName = Txt_Box_Givenname_Add_Employee.Text;
             string familyName = Txt_Box_Familyname_Add_Employee.Text;
             DateTime dob = Datepicker_Add_Employee.SelectedDate ?? DateTime.Now;
@@ -38,8 +38,8 @@ namespace sql_connect_database
             //create new employee objct with values
 
             Employee newEmployee = new Employee(
-                id,
-                givenName,
+                //id,
+                0,givenName,
                 familyName,
                 dob,
                 genderIdentity,
@@ -50,6 +50,7 @@ namespace sql_connect_database
             //Call the manager class to save employee object
             EmployeeManager manager = new EmployeeManager();
             manager.AddEmployee(newEmployee);
+            Txt_Box_Id_Add_Employee.Text = newEmployee.ID.ToString();
             //Message Box to confirm that employee has been added to th database. 
             MessageBox.Show("New employee added");
 

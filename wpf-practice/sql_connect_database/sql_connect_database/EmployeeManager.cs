@@ -50,27 +50,27 @@ namespace sql_connect_database
             return employees;
 
         
-        }  
+        }
         public void AddEmployee(Employee employee)  //Method to Add an employee 
         {
             using MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
 
-            string addemployeesql = @"INSERT INTO employees (given_name, family_name, date_of_birth, gender_identity, gross_salary, supervisor_id, branch_id)"+
-                                      "VALUES (@GivenName, @FamilyName, @DateOfBirth, @Gender, @GrossSalary, @SupervisorID, @BranchID)";
-        
-        
-               using MySqlCommand cmd = new MySqlCommand(addemployeesql,connection );
-               cmd.Parameters.AddWithValue("@GivenName", employee.GivenName);
-               cmd.Parameters.AddWithValue("@FamilyName", employee.FamilyName);
-               cmd.Parameters.AddWithValue("@DateOfBirth", employee.DateofBirth);
-               cmd.Parameters.AddWithValue("@Gender", employee.GenderIdentity);
-               cmd.Parameters.AddWithValue("@GrossSalary", employee.GrossSalary);
-               cmd.Parameters.AddWithValue("@SupervisorID", employee.SupervisorID);
-               cmd.Parameters.AddWithValue("@BranchID", employee.BranchID);
+            string addemployeesql = @"INSERT INTO employees (given_name, family_name, date_of_birth, gender_identity, gross_salary, supervisor_id, branch_id)" +
+                                      "VALUES (@GivenName, @FamilyName, @DateOfBirth, @Gender, @GrossSalary, @SupervisorID, @BranchID); SELECT LAST_INSERT_ID();";
 
-               cmd.ExecuteNonQuery();
 
+            using MySqlCommand cmd = new MySqlCommand(addemployeesql, connection);
+            cmd.Parameters.AddWithValue("@GivenName", employee.GivenName);
+            cmd.Parameters.AddWithValue("@FamilyName", employee.FamilyName);
+            cmd.Parameters.AddWithValue("@DateOfBirth", employee.DateofBirth);
+            cmd.Parameters.AddWithValue("@Gender", employee.GenderIdentity);
+            cmd.Parameters.AddWithValue("@GrossSalary", employee.GrossSalary);
+            cmd.Parameters.AddWithValue("@SupervisorID", employee.SupervisorID);
+            cmd.Parameters.AddWithValue("@BranchID", employee.BranchID);
+
+            int newId = Convert.ToInt32(cmd.ExecuteScalar());
+            employee.ID=newId;
             connection.Close();
 
 
