@@ -120,6 +120,31 @@ namespace sql_connect_database
                 List_Box_Display_Employees.Items.Add(employee);
             }
         }
+
+        private void Bttn_Show_All_Sales_Employee_Click(object sender, RoutedEventArgs e)
+        {
+            //get ID from text box
+            int employeeId = int.Parse(Txt_Box_ID_Specific_Employee.Text);
+
+            EmployeeManager manager = new EmployeeManager();
+
+            List<string> salesList = manager.SearchSalesById(employeeId);
+
+            List_Box_Display_Employees.Items.Clear();
+
+            if (salesList.Count > 0)
+            {
+                foreach (string sale in salesList)
+                {
+                    List_Box_Display_Employees.Items.Add(sale);
+                }
+            }
+            else
+            {
+                List_Box_Display_Employees.Items.Add("No sales found for this employee.");
+            }
+
+        }
     }
 
 

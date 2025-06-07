@@ -161,8 +161,48 @@ namespace sql_connect_database
 
 
         }
+        public List<string> SearchSalesById(int Id)
+        {
+            List<string> employeeSalesList = new List<string>();                       //this list doesnt use the previoous employee list because the attributes are not the same, there are new attributes
+                                                                                       //therefore, it wouldnot be an instance of the class Employee as the the previous functions created.  
+            using MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
+
+            string salesbyid = @"SELECT employees.id, employees.given_name, employees.family_name, working_with.total_sales, working_with.client_id 
+                                    FROM employees
+                                    INNER JOIN working_with ON employees.id = working_with.employee_id WHERE employees.id = @Id;";
+
+            using MySqlCommand cmd = new MySqlCommand(salesbyid, connection);
+            cmd.Parameters.AddWithValue("@Id", Id);
+
+            using MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            { 
+                int employeId = Convert.ToInt32(reader["id"]);
+                string givenName = reader["given_name"].ToString();
+                string familyName = reader["family_name"].ToString();
+                int totalSales = Convert.ToInt32(reader["total_Sales"]);
+                int client_id = Convert.ToInt32(reader["client_id"]);
+
+                string result = $"ID:{employeId}, Employee:{givenName}{familyName}, Sales:{totalSales}, Client Id:{client_id}";
+                employeeSalesList.Add(result);        
+            
+            }
+            return employeeSalesList;
 
 
+
+
+
+
+
+
+
+
+        }
+
+     
 
 
     }   
