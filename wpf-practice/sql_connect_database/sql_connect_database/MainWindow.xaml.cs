@@ -158,6 +158,21 @@ namespace sql_connect_database
             MessageBox.Show("Salary updated");
 
         }
+        private void List_Box_Display_Employees_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (List_Box_Display_Employees.SelectedItem is Employee selectedEmployee)
+            {
+                Txt_Box_Id_Add_Employee.Text = selectedEmployee.ID.ToString();
+                Txt_Box_Givenname_Add_Employee.Text = selectedEmployee.GivenName;
+                Txt_Box_Familyname_Add_Employee.Text = selectedEmployee.FamilyName;
+                Datepicker_Add_Employee.SelectedDate = selectedEmployee.DateofBirth;
+                Txt_Box_Gender_Identity.Text = selectedEmployee.GenderIdentity;
+                Txt_Box_GrossSalary_Add_Employee.Text = selectedEmployee.GrossSalary.ToString();
+                Txt_Box_Suprvisor_Id_Add_Employee.Text = selectedEmployee.SupervisorID.ToString();
+                Txt_Box_BranchID_Add_Employee.Text = selectedEmployee.BranchID.ToString();
+            }
+        }
+
     }
 
 
