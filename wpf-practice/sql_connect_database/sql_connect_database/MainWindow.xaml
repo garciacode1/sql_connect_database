@@ -28,15 +28,15 @@
         <Label Grid.Column="3" Content="Add New Employee" HorizontalAlignment="Left" Margin="60,0,0,0" Grid.Row="2" VerticalAlignment="Top" Background="#FF71EFE7" BorderBrush="White"/>
         <TextBox x:Name="Txt_Box_Id_Add_Employee" IsEnabled="False" Grid.Column="3" HorizontalAlignment="Left" Margin="140,35,0,0" Grid.Row="2" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="43" Background="#FFFFF298"/>
         <TextBox x:Name="Txt_Box_Givenname_Add_Employee" Grid.Column="3" HorizontalAlignment="Left" Margin="140,57,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Given Name" VerticalAlignment="Top" Width="76" Background="#FFFFF298"/>
-        <TextBox x:Name="Txt_Box_GrossSalary_Add_Employee" Grid.Column="3" HorizontalAlignment="Left" Margin="137,143,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Gross Salary" VerticalAlignment="Top" Width="83" RenderTransformOrigin="0.577,1.529" Height="24" Background="#FFFFF298"/>
+        <TextBox x:Name="Txt_Box_GrossSalary_Add_Employee" Grid.Column="3" HorizontalAlignment="Left" Margin="150,150,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Gross Salary" VerticalAlignment="Top" Width="84" RenderTransformOrigin="0.577,1.529" Height="24" Background="#FFFFF298"/>
         <TextBox x:Name="Txt_Box_Familyname_Add_Employee" Grid.Column="3" HorizontalAlignment="Left" Margin="140,80,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Family Name" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.467,0.559" Background="#FFFFF298"/>
-        <Label x:Name="Label_Dateofbirth_Add_Employee" Grid.Column="3" Content="Date of Birth:" HorizontalAlignment="Left" Margin="10,105,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label x:Name="Label_Dateofbirth_Add_Employee" Grid.Column="3" Content="Date of Birth:" HorizontalAlignment="Left" Margin="21,102,0,0" Grid.Row="2" VerticalAlignment="Top"/>
         <DatePicker x:Name="Datepicker_Add_Employee" Grid.Column="3" HorizontalAlignment="Left" Margin="118,105,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <Button x:Name="Bttn_Add_New_Employee" Grid.Column="3" Content="Add New Employee" HorizontalAlignment="Center" Margin="0,33,0,0" Grid.Row="3" VerticalAlignment="Top" Height="40" Width="136" Click="Bttn_Add_New_Employee_Click" Background="#FFFF8585"/>
-        <Button x:Name="Bttn_Delete_Employee" Grid.Column="3" Content="Delete Employee" HorizontalAlignment="Center" Margin="0,118,0,0" Grid.Row="3" VerticalAlignment="Top" Width="137" Height="41" Click="Bttn_Delete_Employee_Click" Background="#FFFF8585"/>
+        <Button x:Name="Bttn_Add_New_Employee" Grid.Column="3" Content="Add New Employee" HorizontalAlignment="Left" Margin="40,56,0,0" Grid.Row="3" VerticalAlignment="Top" Height="40" Width="176" Click="Bttn_Add_New_Employee_Click" Background="#FFFF8585"/>
+        <Button x:Name="Bttn_Delete_Employee" Grid.Column="3" Content="Delete Employee" HorizontalAlignment="Center" Margin="0,133,0,0" Grid.Row="3" VerticalAlignment="Top" Width="180" Height="41" Click="Bttn_Delete_Employee_Click" Background="#FFFF8585"/>
         <Button x:Name="Bttn_Show_Employees_Information" Grid.Column="2" Content="Show All Employees Information" HorizontalAlignment="Center" Margin="0,15,0,0" Grid.Row="3" VerticalAlignment="Top" Height="43" Background="#FFFF8585" Click="Bttn_Show_Employees_Information_Click" Width="226"/>
         <Button x:Name="Bttn_Update_Salary" Grid.Column="2" Content="Update salary of any employee" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Top" Width="226" Height="41" Margin="0,134,0,0" Background="#FFFF8585" Click="Bttn_Update_Salary_Click"/>
-        <TextBox x:Name="Txt_Box_BranchID_Add_Employee" Grid.Column="3" HorizontalAlignment="Left" Margin="154,10,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Branch ID" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.311,0.467" Background="#FFFFF298"/>
+        <TextBox x:Name="Txt_Box_BranchID_Add_Employee" Grid.Column="3" HorizontalAlignment="Left" Margin="150,28,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Branch ID" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.311,0.467" Background="#FFFFF298"/>
         <Button x:Name="Bttn_Show_Employee_Same_Branch" Grid.Column="1" Content="Show Employees Working For Same Branch" HorizontalAlignment="Center" Margin="0,132,0,0" Grid.Row="2" VerticalAlignment="Top" Width="240" Height="37" Background="#FFFF8585" Click="Bttn_Show_Employee_Same_Branch_Click" />
         <Button x:Name="Bttn_Show_All_Sales_Employee" Grid.Column="1" Content="Show All Sales for Specific Employee" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="240" Height="41" Background="#FFFF8585" Click="Bttn_Show_All_Sales_Employee_Click"/>
         <TextBox x:Name="Txt_Box_ID_Specific_Employee" Grid.Column="1" HorizontalAlignment="Left" Margin="167,44,0,0" Grid.Row="3" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="46" RenderTransformOrigin="0.844,0.548" Height="18" Background="#FFFFF298"/>
@@ -44,10 +44,10 @@
         <Button x:Name="Bttn_Show_Employees_Earn_More_Amount" Grid.Column="1" Content="Show Employees who earn $70.000+" HorizontalAlignment="Center" Margin="0,134,0,0" Grid.Row="3" VerticalAlignment="Top" Width="240" Height="38" Background="#FFFF8585" Click="Bttn_Show_Employees_Earn_More_Amount_Click"/>
         <TextBox x:Name="Txt_Box_ID_Update_Salary" Grid.Column="2" HorizontalAlignment="Left" Margin="147,101,0,0" Grid.Row="3" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="65" Background="#FFFFF298" RenderTransformOrigin="0.592,0.614" Height="27"/>
         <TextBox x:Name="Txt_Box_NewSalary_Update_Salary" Grid.Column="2" HorizontalAlignment="Left" Margin="24,101,0,0" Grid.Row="3" TextWrapping="Wrap" Text="New Salary" VerticalAlignment="Top" Width="83" Background="#FFFFF298" Height="27"/>
-        <TextBox x:Name="Txt_Box_Gender_Identity" Grid.Column="3" HorizontalAlignment="Left" Margin="10,143,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Gender Identity" VerticalAlignment="Top" Width="99" Height="24" Background="#FFFFF298"/>
-        <TextBox x:Name="Txt_Box_Suprvisor_Id_Add_Employee" Grid.Column="3" HorizontalAlignment="Left" Margin="10,8,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Supervisor ID" VerticalAlignment="Top" Width="120" Background="#FFFFF298"/>
-        <Label x:Name="Label_Delete_Id" Grid.Column="3" Content="Insert Employee ID to delete:" HorizontalAlignment="Left" Margin="6,86,0,0" Grid.Row="3" VerticalAlignment="Top" Height="30" Width="163"/>
-        <TextBox x:Name="Txt_Box_Id_Delete_Employee" Grid.Column="3" HorizontalAlignment="Left" Margin="174,91,0,0" Grid.Row="3" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="63" Height="21" Background="#FFFFF298" />
+        <TextBox x:Name="Txt_Box_Gender_Identity" Grid.Column="3" HorizontalAlignment="Left" Margin="11,145,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Gender Identity" VerticalAlignment="Top" Width="99" Height="24" Background="#FFFFF298"/>
+        <TextBox x:Name="Txt_Box_Suprvisor_Id_Add_Employee" Grid.Column="3" HorizontalAlignment="Left" Margin="24,28,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Supervisor ID" VerticalAlignment="Top" Width="89" Background="#FFFFF298"/>
+        <Label x:Name="Label_Delete_Id" Grid.Column="3" Content="Insert Employee ID to delete:" HorizontalAlignment="Left" Margin="6,103,0,0" Grid.Row="3" VerticalAlignment="Top" Height="30" Width="163"/>
+        <TextBox x:Name="Txt_Box_Id_Delete_Employee" Grid.Column="3" HorizontalAlignment="Left" Margin="174,107,0,0" Grid.Row="3" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="63" Height="21" Background="#FFFFF298" />
         <ComboBox x:Name="Combo_Box_Branch_Id" Grid.Column="1" HorizontalAlignment="Left" Margin="96,100,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120" >
             <ComboBoxItem Content="1"/>
             <ComboBoxItem Content="2"/>
@@ -61,6 +61,11 @@
         <Label Grid.Column="1" Content="Enter ID, then click button:" HorizontalAlignment="Left" Margin="10,40,0,0" Grid.Row="3" VerticalAlignment="Top" Width="173"/>
         <Label Grid.Column="2" Content="Enter new salary, ID and click the button:" HorizontalAlignment="Center" Margin="0,68,0,0" Grid.Row="3" VerticalAlignment="Top" Width="240"/>
         <Label Grid.Column="2" Content="$" HorizontalAlignment="Left" Margin="10,100,0,0" Grid.Row="3" VerticalAlignment="Top" Width="27" Height="28" RenderTransformOrigin="0.467,0.485"/>
+        <Label Grid.Column="3" Content="Gender:" HorizontalAlignment="Left" Margin="24,120,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Grid.Column="3" Content="Salary:" HorizontalAlignment="Left" Margin="156,125,0,0" Grid.Row="2" VerticalAlignment="Top" Height="26" RenderTransformOrigin="0.545,0.002"/>
+        <Label Grid.Column="3" Content="Supervisor ID:" HorizontalAlignment="Left" Margin="12,2,0,0" Grid.Row="3" VerticalAlignment="Top" Width="98"/>
+        <Label Grid.Column="3" Content="Branch ID:" HorizontalAlignment="Left" Margin="163,2,0,0" Grid.Row="3" VerticalAlignment="Top"/>
+        <Label Grid.Column="3" Content="$" HorizontalAlignment="Left" Margin="133,145,0,0" Grid.Row="2" VerticalAlignment="Top" Width="17"/>
 
 
     </Grid>
