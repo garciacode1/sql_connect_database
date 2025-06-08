@@ -145,6 +145,19 @@ namespace sql_connect_database
             }
 
         }
+
+        private void Bttn_Update_Salary_Click(object sender, RoutedEventArgs e)
+        {
+            int employeeId = int.Parse(Txt_Box_ID_Update_Salary.Text);
+            int NewGrossSalary = int.Parse(Txt_Box_NewSalary_Update_Salary.Text);
+
+            EmployeeManager manager = new();
+
+            manager.UpdateGrossSalary(employeeId, NewGrossSalary);
+
+            MessageBox.Show("Salary updated");
+
+        }
     }
 
 

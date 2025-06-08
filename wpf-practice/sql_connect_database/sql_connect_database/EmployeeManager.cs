@@ -192,15 +192,25 @@ namespace sql_connect_database
             return employeeSalesList;
 
 
-
-
-
-
-
-
-
-
         }
+        public void UpdateGrossSalary(int Id, int newGrossSalary)
+        {
+            using MySqlConnection connection = new MySqlConnection(connectionString);  
+            connection.Open();   //open database
+
+            string updategrosssalary = @"UPDATE employees SET gross_salary = @NewGrossSalary WHERE id = @Id;"; //sql query to update gross_salary column 
+
+            using MySqlCommand cmd = new MySqlCommand(updategrosssalary, connection); 
+
+            cmd.Parameters.AddWithValue("@NewGrossSalary", newGrossSalary); 
+            cmd.Parameters.AddWithValue("@Id",Id);
+
+            cmd.ExecuteNonQuery();
+
+
+        }   
+
+
 
      
 
