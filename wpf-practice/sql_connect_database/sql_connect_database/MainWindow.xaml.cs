@@ -173,6 +173,29 @@ namespace sql_connect_database
             }
         }
 
+        private void Bttn_Search_By_Name_Click(object sender, RoutedEventArgs e)
+        {
+            string nametobesearched = Txt_Box_Search_By_Name.Text.Trim();
+
+            EmployeeManager manager = new EmployeeManager();
+
+            List<Employee> matchingnames = manager.EmployeesByGivenName(nametobesearched);  
+
+            List_Box_Display_Employees.Items.Clear();
+
+            if (matchingnames.Count == 0)
+            {
+                MessageBox.Show("No employees found.");
+                return;
+
+            }
+            foreach (Employee emp in matchingnames)
+            {
+
+                List_Box_Display_Employees.Items.Add(emp);
+            
+            }
+        }
     }
 
 

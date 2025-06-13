@@ -18,15 +18,15 @@ namespace sql_connect_database
 
 
         public List<Employee> ShowAllEmployees()
-        {   
-            List <Employee> employees = new List <Employee> ();
+        {
+            List<Employee> employees = new List<Employee>();
 
-            
+
             using MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
 
             string loademployees = "SELECT * FROM employees;";
-            using MySqlCommand command = new MySqlCommand (loademployees, connection);
+            using MySqlCommand command = new MySqlCommand(loademployees, connection);
             using MySqlDataReader reader = command.ExecuteReader();
 
             while (reader.Read())
@@ -49,7 +49,7 @@ namespace sql_connect_database
 
             return employees;
 
-        
+
         }
         public void AddEmployee(Employee employee)  //Method to Add an employee 
         {
@@ -70,7 +70,7 @@ namespace sql_connect_database
             cmd.Parameters.AddWithValue("@BranchID", employee.BranchID);
 
             int newId = Convert.ToInt32(cmd.ExecuteScalar());
-            employee.ID=newId;
+            employee.ID = newId;
             connection.Close();
 
 
@@ -95,12 +95,12 @@ namespace sql_connect_database
         }
         public List<Employee> ShowHigherSalary()
         {
-           List<Employee> employees = new List<Employee>();
-            using MySqlConnection connection = new MySqlConnection( connectionString);
+            List<Employee> employees = new List<Employee>();
+            using MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
 
             string highersalary = "SELECT * FROM employees Where gross_salary >70000";
-            
+
             using MySqlCommand cmd = new MySqlCommand(highersalary, connection);
             using MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -178,7 +178,7 @@ namespace sql_connect_database
             using MySqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
-            { 
+            {
                 int employeId = Convert.ToInt32(reader["id"]);
                 string givenName = reader["given_name"].ToString();
                 string familyName = reader["family_name"].ToString();
@@ -186,8 +186,8 @@ namespace sql_connect_database
                 int client_id = Convert.ToInt32(reader["client_id"]);
 
                 string result = $"ID:{employeId}, Employee:{givenName}{familyName}, Sales:{totalSales}, Client Id:{client_id}";
-                employeeSalesList.Add(result);        
-            
+                employeeSalesList.Add(result);
+
             }
             return employeeSalesList;
 
@@ -196,26 +196,59 @@ namespace sql_connect_database
         }
         public void UpdateGrossSalary(int Id, int newGrossSalary)
         {
-            using MySqlConnection connection = new MySqlConnection(connectionString);  
+            using MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();   //open database
 
             string updategrosssalary = @"UPDATE employees SET gross_salary = @NewGrossSalary WHERE id = @Id;"; //sql query to update gross_salary column 
 
-            using MySqlCommand cmd = new MySqlCommand(updategrosssalary, connection); 
+            using MySqlCommand cmd = new MySqlCommand(updategrosssalary, connection);
 
-            cmd.Parameters.AddWithValue("@NewGrossSalary", newGrossSalary); 
-            cmd.Parameters.AddWithValue("@Id",Id);
+            cmd.Parameters.AddWithValue("@NewGrossSalary", newGrossSalary);
+            cmd.Parameters.AddWithValue("@Id", Id);
 
             cmd.ExecuteNonQuery();
 
 
-        }   
+        }
+        public List<Employee> EmployeesByGivenName(string givenName)
+        {
+            List<Employee> employees = new List<Employee>();
+            using MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
+
+            string employeesbyname = "SELECT * FROM employees WHERE given_name LIKE @search OR family_name LIKE @search;";
+            using MySqlCommand cmd = new MySqlCommand(employeesbyname, connection);
+            cmd.Parameters.AddWithValue("@search", "%" + givenName + "%");
+
+
+            using MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                int id = Convert.ToInt32(reader["id"]);
+                string firstName = (string)(reader["given_name"]);
+                string familyName = (string)(reader["family_name"]);
+                DateTime dob = Convert.ToDateTime(reader["date_of_birth"]);
+                string genderIdentity = (string)(reader["gender_identity"]);
+                int grossSalary = Convert.ToInt32(reader["gross_salary"]);
+                int supervisorId = Convert.ToInt32(reader["supervisor_id"]);
+                int branchId = Convert.ToInt32(reader["branch_id"]);
+
+
+                Employee employee = new Employee(id, firstName, familyName, dob, genderIdentity, grossSalary, supervisorId, branchId);
+
+                employees.Add(employee);
+
+            }
+
+            return employees;
 
 
 
-     
 
 
-    }   
-    
+        }
+
+    }
 }
